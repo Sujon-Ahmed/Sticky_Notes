@@ -1,0 +1,66 @@
+:root {
+    --con_bg_color: #2f3542;
+    --input_bg_color: #57606f;
+    --placeholder_color: #dddddd;
+    --font_color: #ffffff;
+}
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--con_bg_color);
+    border-radius: 15px;
+}
+input[type="search"] {
+    text-indent: 20px;
+    background: var(--input_bg_color);
+    border: none;
+    outline: none;
+}
+input[type="search"]:focus {
+    text-indent: 20px;
+    background: var(--input_bg_color);
+    border: none;
+    outline: none;
+}
+input[type="search"]::placeholder {
+    text-indent: 20px;
+    color: var(--placeholder_color);
+}
+
+i.fa-search {
+    z-index: 1000;
+    color: #333;
+    padding: 0 10px;
+    top: 10px;
+}
+i.fa-ellipsis-h {
+    z-index: 1000;
+    color: var(--font_color);
+    cursor: pointer;
+    position: relative;
+}
+.act {
+    position: absolute;
+    width: 150px;
+    background: var(--con_bg_color);
+    padding: 20px;
+    right: 0;
+    display: none;
+}
+.act a {
+    text-decoration: none;
+    color: var(--font_color);
+}
+.act a:hover {
+    color: dodgerblue;
+}
+span.actions:hover>.act {
+    display: block;
+}
+.card {
+    background: var(--input_bg_color);
+    color: var(--font_color);
+}
+a.delete{
+    cursor: pointer;
+}
