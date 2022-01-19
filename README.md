@@ -3,7 +3,7 @@
 
 <b>Body</b>
 
-In this tutorial we will create a <b>Simple Sticky Notes App</b> using <b>PHP</b>. <b>PHP</b> is a server-side scripting language designed primarily for web development. Using PHP, you can let your user directly interact with the script and easily to learned its syntax. It is mostly used by newly coders for its user-friendly environment.
+In this repository we will create a <b>Simple Sticky Notes App</b> using <b>PHP</b>. <b>PHP</b> is a server-side scripting language designed primarily for web development. Using PHP, you can let your user directly interact with the script and easily to learned its syntax. It is mostly used by newly coders for its user-friendly environment.
 
 ### So Let's do the coding...
 ## Getting started:
