@@ -29,36 +29,44 @@ $after_assoc = mysqli_fetch_assoc($qry);
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <header>
-                    <h4><a href="index.php" class="text-light fw-bolder text-decoration-none">Sticky Notes</a></h4>
+                    <h4 class="text-light fw-bolder">Sticky Notes</h4>
                     <hr class="w-25 text-light">
                     <div class="input-group text-light">
                         <i class="fa fa-search position-absolute text-light"></i>
-                        <input type="search" name="search" class="form-control mb-3 position-relative text-light" placeholder="Search..." id="">
+                        <input type="search" name="search" id="myInput" onkeyup="myFunction()" class="form-control mb-3 position-relative text-light" placeholder="Search your sticky notes..." autocomplete="off">
                     </div>
                 </header>
-                <?php foreach ($notes as $note) { ?>
-                    <div class="card mb-3">
-                        <div class="card-header d-flex justify-content-between bg-info">
-                            <span><?= date('M-d-Y h:i A', strtotime($note['created_at'])) ?></span>
-                            <span class="actions">
-                                <i class="fa fa-ellipsis-h"></i>
-                                <div class="act">
-                                    <a href="edit.php?id=<?= $note['id'] ?>">Edit Notes</a>
-                                    <a name="delete.php?id=<?= $note['id'] ?>" class="delete">Delete Notes</a>
-                                </div>
-                            </span>
-                        </div>
-                        <div class="card-body">
-                            <div class="content">
-                                <?= $note['notes'] ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
+                <table class="table table-bordered" id="myTable">
+                    <tbody>
+                        <?php foreach ($notes as $note) { ?>
+                            <tr>
+                                <td>
+                                    <div class="card mb-3">
+                                        <div class="card-header d-flex justify-content-between bg-info">
+                                            <span><?= date('M-d-Y h:i A', strtotime($note['created_at'])) ?></span>
+                                            <span class="actions">
+                                                <i class="fa fa-ellipsis-h"></i>
+                                                <div class="act">
+                                                    <a href="edit.php?id=<?= $note['id'] ?>">Edit Notes</a>
+                                                    <a name="delete.php?id=<?= $note['id'] ?>" class="delete">Delete Notes</a>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="content">
+                                                <?= $note['notes'] ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <header>
                     <h4 class="fw-bolder text-light">Write Your Notes</h4>
                     <hr class="w-50 text-light">
@@ -142,6 +150,26 @@ $after_assoc = mysqli_fetch_assoc($qry);
         </script>
     <?php }
     unset($_SESSION['delete_success']) ?>
+     <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, textValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = document.getElementsByTagName('tr');
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName('td')[0];
+                if (td) {
+                    textValue = td.textContent || td.innerHTML;
+                    if (textValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = '';
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
+                }
+            }   
+        }
+    </script>
 </body>
 
 </html>
